@@ -1,0 +1,63 @@
+# Backend Challenge
+
+A bare Django + Django REST Framework project. There is no application code yet —
+that's deliberate.
+
+## Before the interview
+
+Please get this project running inside the development container configuration
+we've sent you separately. Add it to this repository, bring it up, and confirm
+the checks below pass.
+
+Doing this ahead of time means we can spend the session on the actual problem
+rather than on environment setup. **You don't need to write any application code
+yet** — the exercise itself is handed over at the start of the interview.
+
+If you get stuck on setup, tell us before the session rather than burning your
+own time on it.
+
+## What the project expects
+
+The database connection reads entirely from environment variables, which the
+container is expected to supply:
+
+| Variable | Default |
+| --- | --- |
+| `POSTGRES_DB` | `challenge` |
+| `POSTGRES_USER` | `challenge` |
+| `POSTGRES_PASSWORD` | `challenge` |
+| `POSTGRES_HOST` | `db` |
+| `POSTGRES_PORT` | `5432` |
+| `DJANGO_SECRET_KEY` | a throwaway development value |
+
+Every one has a default, so if your container runs Postgres on a host named `db`
+with matching credentials, it will connect with no extra configuration.
+
+Python dependencies are pinned in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Confirming it works
+
+```bash
+python manage.py check
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
+```
+
+You should see no issues from `check`, migrations applying cleanly against
+Postgres, and the admin site responding at `/admin/`.
+
+## What's here
+
+```
+config/           Django project settings, URLs, WSGI/ASGI entrypoints
+manage.py         Django CLI entrypoint
+requirements.txt  Pinned dependencies
+```
+
+DRF is installed and configured with token authentication and an
+`IsAuthenticated` default permission class, so you won't need to build login or
+registration during the exercise.
