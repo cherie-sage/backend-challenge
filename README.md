@@ -3,6 +3,11 @@
 A bare Django + Django REST Framework project. There is no application code yet —
 that's deliberate.
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cherie-sage/backend-challenge)
+
+Work in a codespace or in a local clone — either is fine. Whichever you pick,
+add the container configuration first; see below.
+
 ## Before the interview
 
 Please get this project running inside the development container configuration
