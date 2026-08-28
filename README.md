@@ -1,64 +1,82 @@
 # Backend Challenge
 
 This is an empty Django project. There is no app code in it yet. That is on
-purpose.
+purpose — we will give you the task on the day of the interview.
 
-Before the interview, please set it up and check that it runs. You do **not**
-need to write any code yet. We will give you the task on the day.
+Before the interview, please open the project and check that it runs. You do
+**not** need to write any code yet.
 
-Please work in your own copy. You do not need to push anything back here.
+You do not need to push anything back to this repository.
 
 ---
 
-## Step 1 — Get the code
+# Choose how you want to work
 
-Pick one. Both are fine.
+There are two options. Both are fine. Pick whichever you prefer.
 
-**Option A — GitHub Codespaces (runs in your browser)**
+---
+
+## Option 1 — GitHub Codespaces (nothing to install)
+
+Click this button:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cherie-sage/backend-challenge)
 
-**Option B — Clone it and run it on your computer**
+That is the whole setup. It opens VS Code in your browser and prepares
+everything for you: the database, the Python packages, and the migrations. The
+first start takes a few minutes. After that, go to
+[Check that it works](#check-that-it-works).
+
+**Things to know before you choose this option:**
+
+- The editor runs in your browser, so typing can feel a little slower than an
+  editor on your own machine.
+- GitHub Copilot is already installed. You are welcome to use it.
+- **Please delete the codespace after the interview.** It is paid for by your
+  own GitHub account. See [Delete your codespace](#delete-your-codespace-option-1-only)
+  at the end.
+
+---
+
+## Option 2 — Run it on your own computer
+
+You need **Docker Desktop** and **VS Code** installed.
+
+**Step 1.** Get the code:
 
 ```bash
 git clone https://github.com/cherie-sage/backend-challenge.git
 cd backend-challenge
 ```
 
-For Option B you need Docker Desktop installed.
+**Step 2.** Open the folder in VS Code. It will ask *"Reopen in Container"* —
+click it.
 
-## Step 2 — Add the container files
+If it does not ask, press `Ctrl/Cmd + Shift + P` and run
+**Dev Containers: Reopen in Container**.
 
-We sent you a folder called `.devcontainer` in a separate message.
+**Step 3.** Wait for it to finish. The first time takes a few minutes. It sets
+up the database and installs the packages for you.
 
-Copy that folder into the top level of the project. When you are done, the
-files should be here:
+Then go to [Check that it works](#check-that-it-works).
 
-```
-.devcontainer/devcontainer.json
-.devcontainer/docker-compose.yml
-```
+---
 
-**Do this before you start the container.** The project needs a Postgres
-database, and these files are what set it up.
+# Using AI tools
 
-If you skipped this step and made a codespace already, that is fine. Add the
-folder now, then open the command palette and run
-**Dev Containers: Rebuild Container**.
+**You can use AI. We do not mind which one.**
 
-## Step 3 — Start the container
+Copilot in the editor, ChatGPT or Claude in another browser tab, web search,
+documentation — all of it is fine. Use whatever you normally use. You are not
+limited to the tools inside the editor.
 
-**If you used Option A (Codespaces):** open the command palette
-(`Ctrl/Cmd + Shift + P`) and run **Codespaces: Rebuild Container**.
+We only ask one thing: **be ready to explain your own code.** We will ask why
+you did something and what happens in edge cases. That part matters more to us
+than who or what wrote the first draft.
 
-**If you used Option B (your own computer):** open the folder in VS Code. It
-will ask *"Reopen in Container"* — click it. If it does not ask, open the
-command palette and run **Dev Containers: Reopen in Container**.
+---
 
-Either way, wait for it to finish. The first time takes a few minutes. It
-installs the Python packages for you.
-
-## Step 4 — Check that it works
+# Check that it works
 
 Run these three commands, one at a time:
 
@@ -73,28 +91,27 @@ This is what you should see:
 | Command | What you should see |
 | --- | --- |
 | `check` | `System check identified no issues` |
-| `migrate` | A list of migrations, each ending in `OK` |
+| `migrate` | A list of migrations, each ending in `OK`, or `No migrations to apply` |
 | `runserver` | The server starts. Open `/admin/` and a login page loads. |
 
 If all three work, you are ready. You can stop here.
 
-## Step 5 — If something goes wrong
+---
 
-Tell us before the interview. Do not spend hours on it. A broken setup is our
-problem, not part of the test.
+# If something goes wrong
 
-Two common problems:
+Tell us **before** the interview. Please do not spend hours on it. A broken
+setup is our problem, not part of the test.
 
-- **`could not connect to server`** — the database is not running. Check that
-  you did Step 2 and that the container was rebuilt after that.
-- **The server starts but `migrate` fails** — this usually means the container
-  is running without the database. Same fix as above.
+- **`could not connect to server`** — the database did not start. Wait a few
+  seconds and try again. If it keeps happening, contact us.
+- **The container will not build** — contact us. Do not try to fix it yourself.
 
 ---
 
-## After the interview: delete your codespace
+# Delete your codespace (Option 1 only)
 
-Only if you used Option A.
+Skip this if you worked on your own computer.
 
 Codespaces are paid for by **your own** GitHub account, not ours. A free account
 has more than enough for this task. But a codespace you leave behind keeps using
@@ -105,8 +122,8 @@ still uses storage.
 
 To delete it:
 
-1. Go to [github.com/codespaces](https://github.com/codespaces). This shows all
-   your codespaces.
+1. Go to [github.com/codespaces](https://github.com/codespaces). This page shows
+   all of your codespaces.
 2. Click the `...` button next to this one.
 3. Click **Delete**.
 
@@ -114,20 +131,21 @@ If you forget, GitHub deletes it for you after 30 days.
 
 ---
 
-## About this project (for reference)
+# About this project (for reference)
 
 You do not need to read this to finish the setup.
 
-**What is in the repo:**
+**What is in the repository:**
 
 ```
 config/           Django settings and URLs
 manage.py         The Django command tool
 requirements.txt  The Python packages
+.devcontainer/    The container setup (database, Python)
 ```
 
-**Settings the container provides.** The project reads these from the
-environment. They all have defaults, so you do not need to set them yourself:
+**Database settings.** The container provides these. They all have defaults, so
+you do not need to set anything yourself:
 
 | Name | Default |
 | --- | --- |
