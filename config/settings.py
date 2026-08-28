@@ -19,6 +19,12 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret-key-not-for-product
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
+# GitHub Codespaces serves the forwarded port over HTTPS but terminates TLS at
+# its proxy, so Django sees a plain HTTP request while the browser sends an
+# https:// Origin header. Without this, every form POST from a codespace fails
+# CSRF origin checking.
+CSRF_TRUSTED_ORIGINS = ["https://*.app.github.dev"]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
