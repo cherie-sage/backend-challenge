@@ -1,59 +1,66 @@
 # Backend Challenge
 
-A bare Django + Django REST Framework project. There is no application code yet —
-that's deliberate.
+This is an empty Django project. There is no app code in it yet. That is on
+purpose.
+
+Before the interview, please set it up and check that it runs. You do **not**
+need to write any code yet. We will give you the task on the day.
+
+Please work in your own copy. You do not need to push anything back here.
+
+---
+
+## Step 1 — Get the code
+
+Pick one. Both are fine.
+
+**Option A — GitHub Codespaces (runs in your browser)**
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cherie-sage/backend-challenge)
 
-Work in a codespace or in a local clone — either is fine. Whichever you pick,
-add the container configuration first; see below.
-
-## Before the interview
-
-Please get this project running inside the development container configuration
-we've sent you separately. Add it to this repository, bring it up, and confirm
-the checks below pass.
-
-Doing this ahead of time means we can spend the session on the actual problem
-rather than on environment setup. **You don't need to write any application code
-yet** — the exercise itself is handed over at the start of the interview.
-
-Please **clone this repository and work in your local copy** — there's no need
-to push anything back to it.
-
-If you get stuck on setup, tell us before the session rather than burning your
-own time on it.
-
-> **A note on Codespaces:** you're welcome to work in a codespace, but create it
-> only *after* you've added the container configuration. A codespace made from
-> this repository as-is falls back to a generic image with no database, and
-> `migrate` will fail with a connection error — that's expected, not a broken
-> repository.
-
-## What the project expects
-
-The database connection reads entirely from environment variables, which the
-container is expected to supply:
-
-| Variable | Default |
-| --- | --- |
-| `POSTGRES_DB` | `challenge` |
-| `POSTGRES_USER` | `challenge` |
-| `POSTGRES_PASSWORD` | `challenge` |
-| `POSTGRES_HOST` | `db` |
-| `POSTGRES_PORT` | `5432` |
-| `DJANGO_SECRET_KEY` | a throwaway development value |
-
-Every one has a default, so if your container runs Postgres on a host named `db`
-with matching credentials, it will connect with no extra configuration.
-
-Python dependencies are pinned in `requirements.txt`:
+**Option B — Clone it and run it on your computer**
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/cherie-sage/backend-challenge.git
+cd backend-challenge
 ```
 
-## Confirming it works
+For Option B you need Docker Desktop installed.
+
+## Step 2 — Add the container files
+
+We sent you a folder called `.devcontainer` in a separate message.
+
+Copy that folder into the top level of the project. When you are done, the
+files should be here:
+
+```
+.devcontainer/devcontainer.json
+.devcontainer/docker-compose.yml
+```
+
+**Do this before you start the container.** The project needs a Postgres
+database, and these files are what set it up.
+
+If you skipped this step and made a codespace already, that is fine. Add the
+folder now, then open the command palette and run
+**Dev Containers: Rebuild Container**.
+
+## Step 3 — Start the container
+
+**If you used Option A (Codespaces):** open the command palette
+(`Ctrl/Cmd + Shift + P`) and run **Codespaces: Rebuild Container**.
+
+**If you used Option B (your own computer):** open the folder in VS Code. It
+will ask *"Reopen in Container"* — click it. If it does not ask, open the
+command palette and run **Dev Containers: Reopen in Container**.
+
+Either way, wait for it to finish. The first time takes a few minutes. It
+installs the Python packages for you.
+
+## Step 4 — Check that it works
+
+Run these three commands, one at a time:
 
 ```bash
 python manage.py check
@@ -61,38 +68,75 @@ python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
-You should see no issues from `check`, migrations applying cleanly against
-Postgres, and the admin site responding at `/admin/`.
+This is what you should see:
 
-## What's here
+| Command | What you should see |
+| --- | --- |
+| `check` | `System check identified no issues` |
+| `migrate` | A list of migrations, each ending in `OK` |
+| `runserver` | The server starts. Open `/admin/` and a login page loads. |
+
+If all three work, you are ready. You can stop here.
+
+## Step 5 — If something goes wrong
+
+Tell us before the interview. Do not spend hours on it. A broken setup is our
+problem, not part of the test.
+
+Two common problems:
+
+- **`could not connect to server`** — the database is not running. Check that
+  you did Step 2 and that the container was rebuilt after that.
+- **The server starts but `migrate` fails** — this usually means the container
+  is running without the database. Same fix as above.
+
+---
+
+## After the interview: delete your codespace
+
+Only if you used Option A.
+
+Codespaces are paid for by **your own** GitHub account, not ours. A free account
+has more than enough for this task. But a codespace you leave behind keeps using
+your storage.
+
+**Stopping a codespace is not the same as deleting it.** A stopped codespace
+still uses storage.
+
+To delete it:
+
+1. Go to [github.com/codespaces](https://github.com/codespaces). This shows all
+   your codespaces.
+2. Click the `...` button next to this one.
+3. Click **Delete**.
+
+If you forget, GitHub deletes it for you after 30 days.
+
+---
+
+## About this project (for reference)
+
+You do not need to read this to finish the setup.
+
+**What is in the repo:**
 
 ```
-config/           Django project settings, URLs, WSGI/ASGI entrypoints
-manage.py         Django CLI entrypoint
-requirements.txt  Pinned dependencies
+config/           Django settings and URLs
+manage.py         The Django command tool
+requirements.txt  The Python packages
 ```
 
-DRF is installed and configured with token authentication and an
-`IsAuthenticated` default permission class, so you won't need to build login or
-registration during the exercise.
+**Settings the container provides.** The project reads these from the
+environment. They all have defaults, so you do not need to set them yourself:
 
-## If you used a codespace, delete it when we're done
+| Name | Default |
+| --- | --- |
+| `POSTGRES_DB` | `challenge` |
+| `POSTGRES_USER` | `challenge` |
+| `POSTGRES_PASSWORD` | `challenge` |
+| `POSTGRES_HOST` | `db` |
+| `POSTGRES_PORT` | `5432` |
+| `DJANGO_SECRET_KEY` | a test value |
 
-Codespaces are billed to **your own** GitHub account, not ours. A personal
-account includes a monthly allowance that comfortably covers an exercise this
-size, but a codespace left lying around keeps consuming your storage quota until
-it's removed.
-
-**Stopping a codespace is not the same as deleting it** — a stopped codespace
-still uses storage. To delete it properly:
-
-1. Go to [github.com/codespaces](https://github.com/codespaces), which lists
-   every codespace you own across all repositories.
-2. Click the `...` menu next to this one and choose **Delete**.
-
-You can also right-click it under **GitHub Codespaces** in the VS Code Remote
-Explorer and choose *Delete Codespace*.
-
-If you forget, GitHub deletes inactive codespaces automatically after 30 days by
-default. You can shorten that at
-[github.com/settings/codespaces](https://github.com/settings/codespaces).
+**Login is already built.** The project uses Django REST Framework with token
+login. You will not need to build sign-up or login during the task.
