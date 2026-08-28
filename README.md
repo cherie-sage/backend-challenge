@@ -75,3 +75,24 @@ requirements.txt  Pinned dependencies
 DRF is installed and configured with token authentication and an
 `IsAuthenticated` default permission class, so you won't need to build login or
 registration during the exercise.
+
+## If you used a codespace, delete it when we're done
+
+Codespaces are billed to **your own** GitHub account, not ours. A personal
+account includes a monthly allowance that comfortably covers an exercise this
+size, but a codespace left lying around keeps consuming your storage quota until
+it's removed.
+
+**Stopping a codespace is not the same as deleting it** — a stopped codespace
+still uses storage. To delete it properly:
+
+1. Go to [github.com/codespaces](https://github.com/codespaces), which lists
+   every codespace you own across all repositories.
+2. Click the `...` menu next to this one and choose **Delete**.
+
+You can also right-click it under **GitHub Codespaces** in the VS Code Remote
+Explorer and choose *Delete Codespace*.
+
+If you forget, GitHub deletes inactive codespaces automatically after 30 days by
+default. You can shorten that at
+[github.com/settings/codespaces](https://github.com/settings/codespaces).
