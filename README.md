@@ -42,7 +42,24 @@ first start takes a few minutes. After that, go to
 
 ## Option 2 — Run it on your own computer
 
-You need **Docker Desktop** and **VS Code** installed.
+### First, install these three things
+
+1. **Docker Desktop** — install it, then **start it**. It has to be running.
+2. **VS Code**
+3. The **Dev Containers** extension for VS Code. This is the important one. It
+   is made by Microsoft.
+
+**How to install the extension:**
+
+- Press `Ctrl + Shift + P` (Windows/Linux) or `Cmd + Shift + P` (Mac). A search
+  box opens at the top of VS Code.
+- Type `Extensions: Install Extensions` and press Enter.
+- Search for **Dev Containers**.
+- Click **Install** on the one published by Microsoft.
+
+Without this extension, the next steps will not work.
+
+### Then follow these steps
 
 **Step 1.** Get the code:
 
@@ -51,13 +68,21 @@ git clone https://github.com/cherie-sage/backend-challenge.git
 cd backend-challenge
 ```
 
-**Step 2.** Open the folder in VS Code. It will ask *"Reopen in Container"* —
-click it.
+**Step 2.** Open that folder in VS Code.
 
-If it does not ask, press `Ctrl/Cmd + Shift + P` and run
-**Dev Containers: Reopen in Container**.
+**Step 3.** Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on a Mac). In the
+search box that opens, type:
 
-**Step 3.** Wait for it to finish. The first time takes a few minutes. It sets
+```
+Dev Containers: Reopen in Container
+```
+
+Press Enter.
+
+*(VS Code sometimes shows a small popup in the corner asking "Reopen in
+Container". Clicking that does exactly the same thing.)*
+
+**Step 4.** Wait for it to finish. The first time takes a few minutes. It sets
 up the database and installs the packages for you.
 
 Then go to [Check that it works](#check-that-it-works).
