@@ -32,6 +32,8 @@ first start takes a few minutes. After that, go to
 - The editor runs in your browser, so typing can feel a little slower than an
   editor on your own machine.
 - GitHub Copilot is already installed. You are welcome to use it.
+- You will need to make port 8000 **public** once, the first time you start the
+  server. This takes about five seconds — see below.
 - **Please delete the codespace after the interview.** It is paid for by your
   own GitHub account. See [Delete your codespace](#delete-your-codespace-option-1-only)
   at the end.
@@ -94,7 +96,25 @@ This is what you should see:
 | `migrate` | A list of migrations, each ending in `OK`, or `No migrations to apply` |
 | `runserver` | The server starts. Open `/admin/` and a login page loads. |
 
-If all three work, you are ready. You can stop here.
+### Codespaces only: make port 8000 public
+
+When you start the server, Codespaces creates a web link for port 8000. **That
+link is private by default, and you will get an error when you open it.** This
+is expected. You only need to fix it once.
+
+1. Click the **PORTS** tab. It is next to the **TERMINAL** tab, at the bottom.
+2. Find the row for port **8000**.
+3. Right-click that row.
+4. Choose **Port Visibility**, then **Public**.
+
+Now open the link again. It will work.
+
+If you are running on your own computer (Option 2), ignore this. Use
+`http://localhost:8000` as normal.
+
+---
+
+If all three commands work, you are ready. You can stop here.
 
 ---
 
