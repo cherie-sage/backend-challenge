@@ -19,11 +19,21 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret-key-not-for-product
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
-# GitHub Codespaces serves the forwarded port over HTTPS but terminates TLS at
-# its proxy, so Django sees a plain HTTP request while the browser sends an
-# https:// Origin header. Without this, every form POST from a codespace fails
-# CSRF origin checking.
-CSRF_TRUSTED_ORIGINS = ["https://*.app.github.dev"]
+# Django rejects a form POST when the browser's Origin header doesn't match the
+# address Django thinks it is serving. That happens constantly in development
+# because a proxy sits in front: Codespaces terminates TLS at its edge, and
+# VS Code's port forwarding presents the app as localhost. Both routes have to
+# be listed, or every form POST fails with "Origin checking failed".
+CSRF_TRUSTED_ORIGINS = [
+    # Codespaces public forwarded port
+    "https://*.app.github.dev",
+    "https://*.github.dev",
+    # VS Code port forwarding, and plain local use
+    "http://localhost:8000",
+    "https://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://127.0.0.1:8000",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
