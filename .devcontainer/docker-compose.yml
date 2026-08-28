@@ -1,6 +1,9 @@
 services:
   app:
-    image: python:3.12-slim
+    # Microsoft's dev container image: Python 3.12 plus git, curl, gh and the
+    # other tools a development environment is expected to have. The plain
+    # python:3.12-slim image has none of them.
+    image: mcr.microsoft.com/devcontainers/python:3.12
     volumes:
       - ..:/workspaces/backend-challenge:cached
     command: sleep infinity
