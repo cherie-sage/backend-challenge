@@ -13,8 +13,17 @@ Doing this ahead of time means we can spend the session on the actual problem
 rather than on environment setup. **You don't need to write any application code
 yet** — the exercise itself is handed over at the start of the interview.
 
+Please **clone this repository and work in your local copy** — there's no need
+to push anything back to it.
+
 If you get stuck on setup, tell us before the session rather than burning your
 own time on it.
+
+> **A note on Codespaces:** you're welcome to work in a codespace, but create it
+> only *after* you've added the container configuration. A codespace made from
+> this repository as-is falls back to a generic image with no database, and
+> `migrate` will fail with a connection error — that's expected, not a broken
+> repository.
 
 ## What the project expects
 
