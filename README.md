@@ -6,26 +6,49 @@ purpose — we will give you the task on the day of the interview.
 Before the interview, please open the project and check that it runs. You do
 **not** need to write any code yet.
 
-You do not need to push anything back to this repository.
+---
+
+# Step 1 — Fork this repository
+
+Click the **Fork** button at the top right of this page. That gives you your
+own copy under your own GitHub account.
+
+**Work in your fork, not in this one.** You do not have permission to push
+here, and your fork is where your work lives.
 
 ---
 
-# Choose how you want to work
+# Step 2 — Choose how you want to work
 
 There are two options. Both are fine. Pick whichever you prefer.
+
+Either way, use **your fork**, not this repository.
 
 ---
 
 ## Option 1 — GitHub Codespaces (nothing to install)
 
-Click this button:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cherie-sage/backend-challenge)
+Go to **your fork**, click the green **Code** button, open the
+**Codespaces** tab, and click **Create codespace on main**.
 
 That is the whole setup. It opens VS Code in your browser and prepares
 everything for you: the database, the Python packages, and the migrations. The
 first start takes a few minutes. After that, go to
 [Check that it works](#check-that-it-works).
+
+> **Make sure you are on your own fork before you click.** Starting a codespace
+> from *this* repository works, but you will not be able to save your work,
+> because you cannot push here. The page should show **your username**.
+
+<details>
+<summary>Just want a quick look without forking?</summary>
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cherie-sage/backend-challenge)
+
+This opens a codespace on our copy. Fine for a look around, but you cannot save
+anything from it. Fork first if you are doing the setup properly.
+
+</details>
 
 **Things to know before you choose this option:**
 
@@ -63,10 +86,14 @@ Without this extension, the next steps will not work.
 
 **Step 1.** Get the code:
 
+Copy the URL from the green **Code** button on **your fork**, then:
+
 ```bash
-git clone https://github.com/cherie-sage/backend-challenge.git
+git clone https://github.com/YOUR-USERNAME/backend-challenge.git
 cd backend-challenge
 ```
+
+Replace `YOUR-USERNAME` with your GitHub username.
 
 **Step 2.** Open that folder in VS Code.
 
@@ -202,4 +229,15 @@ you do not need to set anything yourself:
 | `DJANGO_SECRET_KEY` | a test value |
 
 **Login is already built.** The project uses Django REST Framework with token
-login. You will not need to build sign-up or login during the task.
+login, so you won't need to build sign-up or login during the task.
+
+**Framework.** DRF is what's pre-wired, but you're not locked into it. Prefer
+something else — Django Ninja, plain Django views returning JSON, whatever
+you're comfortable with? That's fine. Just know that swapping frameworks means
+you're also responsible for wiring up the token auth yourself, since the
+pre-built login is a DRF piece.
+
+**Django version.** `requirements.txt` pins a version so the setup works out
+of the box. Feel free to use a different version of Django or DRF if you
+prefer — just update `requirements.txt` and re-run the install step for
+whichever setup option you picked.
