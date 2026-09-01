@@ -3,7 +3,7 @@
 This is an empty Django project. There is no app code in it yet. That is on
 purpose — we will give you the task on the day of the interview.
 
-Before the interview, please open the project and check that it runs. You do
+**Before the interview**, please open the project and check that it runs. You do
 **not** need to write any code yet.
 
 ---
@@ -177,12 +177,7 @@ If all three commands work, you are ready. You can stop here.
 
 # If something goes wrong
 
-Tell us **before** the interview. Please do not spend hours on it. A broken
-setup is our problem, not part of the test.
-
-- **`could not connect to server`** — the database did not start. Wait a few
-  seconds and try again. If it keeps happening, contact us.
-- **The container will not build** — contact us. Do not try to fix it yourself.
+Tell us **before** the interview.
 
 ---
 
