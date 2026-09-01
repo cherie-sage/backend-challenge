@@ -13,8 +13,11 @@ Before the interview, please open the project and check that it runs. You do
 Click the **Fork** button at the top right of this page. That gives you your
 own copy under your own GitHub account.
 
-**Work in your fork, not in this one.** You do not have permission to push
-here, and your fork is where your work lives.
+**Do this whichever option you pick below.** Your fork is the only place your
+work can be saved — you do not have permission to push to this repository.
+
+This matters most if you use Codespaces: a codespace is temporary, and deleting
+it destroys anything you have not pushed to your fork.
 
 ---
 
@@ -57,9 +60,11 @@ anything from it. Fork first if you are doing the setup properly.
 - GitHub Copilot is already installed. You are welcome to use it.
 - You will need to make port 8000 **public** once, the first time you start the
   server. This takes about five seconds — see below.
-- **Please delete the codespace after the interview.** It is paid for by your
-  own GitHub account. See [Delete your codespace](#delete-your-codespace-option-1-only)
-  at the end.
+- **Push your work to your fork as you go.** A codespace is temporary and
+  deleting it destroys anything unpushed.
+- **Please delete the codespace after the interview**, once your work is saved.
+  It is paid for by your own GitHub account. See
+  [Delete your codespace](#delete-your-codespace-option-1-only) at the end.
 
 ---
 
@@ -184,6 +189,32 @@ setup is our problem, not part of the test.
 # Delete your codespace (Option 1 only)
 
 Skip this if you worked on your own computer.
+
+## First — save your work
+
+**Deleting a codespace deletes everything inside it, permanently.** Do this
+before you delete anything.
+
+**If you forked** (the normal case), push your work to your fork:
+
+```bash
+git add -A
+git commit -m "My solution"
+git push
+```
+
+Then open your fork on GitHub and check your files are actually there.
+
+**If you did not fork**, or the push does not work, save a copy instead:
+
+```bash
+zip -r my-solution.zip . -x '*.git*'
+```
+
+Find `my-solution.zip` in the file list on the left, right-click it, and choose
+**Download**. Check the file has downloaded before going any further.
+
+## Then delete it
 
 Codespaces are paid for by **your own** GitHub account, not ours. A free account
 has more than enough for this task. But a codespace you leave behind keeps using
